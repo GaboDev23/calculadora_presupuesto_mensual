@@ -97,10 +97,10 @@ El proyecto puede evolucionar bastante a partir de esta primera versión.
 
 ### Versión 2
 
-* [ ] Agregar validación de datos para evitar errores cuando el usuario introduce texto donde debería introducir un número.
-* [ ] Evitar que se introduzcan valores negativos en ingresos o gastos.
-* [ ] Utilizar `if/else` para mostrar diferentes mensajes dependiendo del dinero restante.
-* [ ] Mejorar el formato visual de la consola.
+* [x] Agregar validación de datos para evitar errores cuando el usuario introduce texto donde debería introducir un número.
+* [x] Evitar que se introduzcan valores negativos en ingresos o gastos.
+* [x] Utilizar `if/else` para mostrar diferentes mensajes dependiendo del dinero restante.
+* [x] Mejorar el formato visual de la consola.
 * [ ] Permitir introducir más categorías de gastos.
 
 ### Versión 3
