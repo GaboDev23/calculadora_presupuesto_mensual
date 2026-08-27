@@ -2,34 +2,56 @@
 
 Una pequeña aplicación de consola desarrollada en **Python** que permite calcular los gastos mensuales de una persona y determinar cuánto dinero le queda disponible después de cubrir sus gastos.
 
-El proyecto fue creado como práctica de los fundamentos básicos de Python, especialmente **datos primitivos, operaciones matemáticas, manipulación de números y F-Strings**.
+El proyecto fue creado como práctica de los fundamentos básicos de Python, especialmente **datos primitivos, operaciones matemáticas, manipulación de números, F-Strings, estructuras de control, funciones, listas, diccionarios y manejo de errores**.
 
 ## 🧠 Conceptos utilizados
 
 Durante el desarrollo del proyecto se practican los siguientes conceptos:
 
 * **Datos primitivos**
-
-  * `str` para nombres y otros textos.
+  * `str` para nombres y textos.
   * `int` para la edad.
   * `float` para ingresos y gastos.
+  * `None` para representar un porcentaje que no puede ser calculado.
 
 * **Operaciones matemáticas**
-
   * Suma de los gastos.
   * Resta entre ingresos y gastos.
   * División y multiplicación para calcular el porcentaje gastado.
 
 * **Manipulación de números**
-
   * Conversión de datos utilizando `int()` y `float()`.
-  * Redondeo de resultados utilizando `round()`.
-  * Formateo de números decimales.
+  * Formateo de cantidades monetarias utilizando `:.2f`.
+  * Cálculo de porcentajes.
 
 * **F-Strings**
-
   * Utilizadas para mostrar los resultados de forma clara y ordenada.
-  * Formateo de cantidades monetarias utilizando `:.2f`.
+  * Formateo de cantidades monetarias con dos decimales.
+  * Inserción de variables dentro de textos.
+
+* **Funciones**
+  * Funciones reutilizables para solicitar y validar valores enteros y decimales.
+
+* **Estructuras de control**
+  * `if`, `elif` y `else` para tomar decisiones.
+  * `while` para repetir solicitudes hasta obtener datos válidos.
+  * `for` para recorrer las categorías y sus gastos.
+
+* **Listas y diccionarios**
+  * Listas para almacenar categorías y sus respectivos gastos.
+  * Diccionarios para organizar las categorías adicionales.
+
+* **Manejo de errores**
+  * `try/except` para evitar que el programa se cierre cuando el usuario introduce datos incorrectos.
+  * Manejo de `ValueError`.
+  * Manejo de `ZeroDivisionError` cuando los ingresos son `0`.
+
+* **Colores en la consola**
+  * Uso de códigos ANSI para mostrar mensajes de diferentes colores.
+  * Rojo para errores y situaciones de exceso de gastos.
+  * Verde para resultados positivos.
+  * Amarillo para advertencias.
+  * Cian para títulos y secciones.
 
 ## ⚙️ ¿Cómo funciona?
 
@@ -41,33 +63,77 @@ Al iniciar el programa, se solicita al usuario:
 4. Gastos de alquiler.
 5. Gastos de comida.
 6. Gastos de transporte.
-7. Otros gastos.
+7. Categorías adicionales de gastos.
 
-Con estos datos, el programa calcula:
+El usuario puede agregar tantas categorías adicionales como necesite.
 
-### Gastos totales
-
-```text
-Gastos totales = alquiler + comida + transporte + otros
-```
-
-### Dinero restante
+Por ejemplo:
 
 ```text
+¿Tienes más categorias de gastos? si
+Nombre de la categoria: Internet
+¿Cuánto gastas en Internet? 1500
+
+¿Tienes más categorias de gastos? si
+Nombre de la categoria: Gimnasio
+¿Cuánto gastas en Gimnasio? 2000
+
+¿Tienes más categorias de gastos? no
+
+El programa almacena las categorías y sus respectivos gastos y los incorpora al cálculo total.
+
+Gastos totales
+
+Los gastos principales y las categorías adicionales se suman para obtener el total:
+
+Gastos totales = alquiler + comida + transporte + categorías adicionales
+Dinero restante
+
+Se calcula cuánto dinero queda después de cubrir todos los gastos:
+
 Dinero restante = ingresos - gastos totales
-```
+Porcentaje gastado
 
-### Porcentaje gastado
+El programa calcula qué porcentaje de los ingresos se ha utilizado:
 
-```text
 Porcentaje gastado = gastos totales / ingresos × 100
-```
 
-Finalmente, se muestra un resumen con toda la información.
+Si los ingresos son 0, el porcentaje no puede calcularse y el programa muestra que el porcentaje no está disponible.
 
-## 🖥️ Ejemplo de ejecución
+Análisis de los gastos
 
-```text
+Dependiendo del porcentaje gastado, el programa muestra diferentes mensajes:
+
+0%: No se ha gastado nada.
+Menos del 50%: Se ha gastado menos de la mitad de los ingresos.
+50%: Se ha gastado exactamente la mitad.
+Entre 50% y 100%: Se muestra una advertencia.
+100%: Se han utilizado todos los ingresos.
+Más del 100%: Los gastos superan los ingresos.
+
+También se muestra un mensaje diferente dependiendo de si al usuario le sobra dinero, queda exactamente en 0 o ha gastado más de lo que tiene disponible.
+
+🛡️ Validación de datos
+
+El programa incluye validaciones para evitar errores provocados por entradas incorrectas.
+
+Por ejemplo, si el usuario introduce texto cuando se espera un número:
+
+Introduce tu edad: abc
+
+Error, la edad debe ser un número entero
+
+El programa vuelve a solicitar el dato hasta que se introduzca un valor válido.
+
+También se evita introducir valores negativos en ingresos y gastos:
+
+¿Cuánto gastas en comida? -500
+
+Error, el número debe ser positivo
+
+La edad debe ser un número entero mayor que 0, mientras que los ingresos y gastos pueden ser 0.
+
+🖥️ Ejemplo de ejecución
 Introduce tu nombre: Gabriel
 Introduce tu edad: 27
 Introduce tus ingresos mensuales: 35000
@@ -77,7 +143,19 @@ GASTOS MENSUALES
 ¿Cuánto gastas en alquiler? 10000
 ¿Cuánto gastas en comida? 6000
 ¿Cuánto gastas en transporte? 2500
-¿Cuánto gastas en otros gastos? 3000
+
+¿Tienes más categorias de gastos? si
+Nombre de la categoria: Internet
+¿Cuánto gastas en Internet? 1500
+
+¿Tienes más categorias de gastos? no
+
+========== GASTOS ==========
+
+Alquiler: $10000.00
+Comida: $6000.00
+Transporte: $2500.00
+Internet: $1500.00
 
 ========== RESUMEN ==========
 
@@ -85,55 +163,63 @@ Nombre: Gabriel
 Edad: 27 años
 
 Ingresos: $35000.00
-Gastos totales: $21500.00
-Dinero restante: $13500.00
-Porcentaje gastado: 61%
+Gastos totales: $20000.00
+Dinero restante: $15000.00
+Porcentaje gastado: 57.14%
 
-¡Te quedan $13500.00 este mes!
-```
-## 🔮 Posibles mejoras y futuras versiones
+¡Te quedan $15000.00 este mes!
 
-El proyecto puede evolucionar bastante a partir de esta primera versión.
+========== RESUMEN DE GASTOS ==========
 
-### Versión 2
+Te ha sobrado: $15000.00
 
-* [x] Agregar validación de datos para evitar errores cuando el usuario introduce texto donde debería introducir un número.
-* [x] Evitar que se introduzcan valores negativos en ingresos o gastos.
-* [x] Utilizar `if/else` para mostrar diferentes mensajes dependiendo del dinero restante.
-* [x] Mejorar el formato visual de la consola.
-* [ ] Permitir introducir más categorías de gastos.
+========== ANALISIS ==========
 
-### Versión 3
+¡Cuidado, has utilizando una gran parte de tus ingresos!
+🔮 Posibles mejoras y futuras versiones
 
-* [ ] Agregar un menú principal.
-* [ ] Permitir registrar varios gastos.
-* [ ] Separar los gastos en categorías.
-* [ ] Calcular qué porcentaje de los ingresos representa cada categoría.
-* [ ] Agregar una opción para modificar o eliminar gastos.
-* [ ] Permitir repetir los cálculos sin reiniciar el programa.
+El proyecto puede evolucionar bastante a partir de esta versión.
 
-### Versión 4
-
-* [ ] Guardar los datos en un archivo.
-* [ ] Cargar los datos cuando se vuelva a iniciar el programa.
-* [ ] Utilizar archivos `.json` para almacenar la información.
-* [ ] Crear un historial de presupuestos mensuales.
-* [ ] Comparar los gastos de diferentes meses.
-
-### Futuras mejoras
-
-* [ ] Crear funciones para organizar mejor el código.
-* [ ] Implementar programación orientada a objetos.
-* [ ] Crear gráficos para visualizar los gastos.
-* [ ] Crear una interfaz gráfica.
-* [ ] Convertir el proyecto en una aplicación web.
-* [ ] Agregar diferentes monedas.
-* [ ] Crear un sistema de metas de ahorro.
-* [ ] Calcular cuánto dinero podría ahorrarse al mes.
-* [ ] Crear recomendaciones basadas en los gastos del usuario.
-
-## 📚 Objetivo del proyecto
+Versión 2
+ Agregar validación de datos para evitar errores cuando el usuario introduce texto donde debería introducir un número.
+ Evitar que se introduzcan valores negativos en ingresos o gastos.
+ Utilizar if/else para mostrar diferentes mensajes dependiendo del dinero restante.
+ Mejorar el formato visual de la consola.
+ Permitir introducir más categorías de gastos.
+ Mostrar las categorías adicionales junto con sus respectivos gastos.
+ Manejar el caso en que los ingresos sean 0 para evitar una división por cero.
+ Mostrar un análisis dependiendo del porcentaje de ingresos gastado.
+ Crear funciones reutilizables para validar valores enteros y decimales.
+ Utilizar colores para diferenciar errores, advertencias y resultados positivos.
+Versión 3
+ Agregar un menú principal.
+ Permitir registrar varios gastos.
+ Separar los gastos en categorías.
+ Calcular qué porcentaje de los ingresos representa cada categoría.
+ Agregar una opción para modificar o eliminar gastos.
+ Permitir repetir los cálculos sin reiniciar el programa.
+ Mejorar la organización del código dividiéndolo en más funciones.
+Versión 4
+ Guardar los datos en un archivo.
+ Cargar los datos cuando se vuelva a iniciar el programa.
+ Utilizar archivos .json para almacenar la información.
+ Crear un historial de presupuestos mensuales.
+ Comparar los gastos de diferentes meses.
+Futuras mejoras
+ Implementar programación orientada a objetos.
+ Crear gráficos para visualizar los gastos.
+ Crear una interfaz gráfica.
+ Convertir el proyecto en una aplicación web.
+ Agregar diferentes monedas.
+ Crear un sistema de metas de ahorro.
+ Calcular cuánto dinero podría ahorrarse al mes.
+ Crear recomendaciones basadas en los gastos del usuario.
+ Permitir establecer límites de gasto por categoría.
+ Mostrar qué categorías representan la mayor parte de los gastos.
+📚 Objetivo del proyecto
 
 El objetivo principal es practicar los fundamentos de Python mediante un proyecto sencillo y funcional, construyendo progresivamente nuevas versiones a medida que se aprenden conceptos más avanzados del lenguaje.
+
+La segunda versión incorpora validación de datos, manejo de errores, funciones reutilizables, categorías personalizadas, análisis de gastos y una presentación visual mejorada.
 
 Este proyecto forma parte del proceso de aprendizaje y puede utilizarse como base para desarrollar posteriormente una aplicación de gestión financiera más completa.
