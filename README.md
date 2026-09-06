@@ -1,83 +1,225 @@
 # 💰 Calculadora de Presupuesto Personal
 
-Una aplicación de consola desarrollada en **Python** que permite gestionar un presupuesto mensual, registrar gastos por categorías y determinar cuánto dinero queda disponible después de cubrir los gastos.
+Una aplicación de consola desarrollada en **Python** para gestionar presupuestos mensuales, registrar gastos por categorías, almacenar un historial financiero y comparar la evolución de ingresos y gastos entre diferentes meses.
 
-El proyecto fue creado como práctica de los fundamentos de Python, incorporando progresivamente conceptos como **datos primitivos, operaciones matemáticas, manipulación de números, F-Strings, funciones, estructuras de control, listas, diccionarios, manejo de errores y modularización**.
+El proyecto comenzó como una calculadora sencilla de ingresos y gastos y ha evolucionado progresivamente incorporando conceptos como **datos primitivos, operaciones matemáticas, F-Strings, funciones, estructuras de control, listas, diccionarios, manejo de errores, modularización, archivos JSON, persistencia de datos y comparación de información histórica**.
 
----
-
-## 🧠 Conceptos utilizados
-
-Durante el desarrollo del proyecto se practican los siguientes conceptos:
-
-* **Datos primitivos**
-
-  * `str` para nombres y textos.
-  * `int` para la edad.
-  * `float` para ingresos y gastos.
-  * `None` para representar un porcentaje que no puede calcularse.
-
-* **Operaciones matemáticas**
-
-  * Suma de gastos.
-  * Resta entre ingresos y gastos.
-  * División y multiplicación para calcular porcentajes.
-
-* **Manipulación de números**
-
-  * Conversión de datos utilizando `int()` y `float()`.
-  * Formateo de cantidades monetarias utilizando `:.2f`.
-  * Cálculo de porcentajes.
-
-* **F-Strings**
-
-  * Utilizadas para mostrar información de forma clara.
-  * Inserción de variables dentro de textos.
-  * Formateo de cantidades monetarias con dos decimales.
-
-* **Funciones**
-
-  * Funciones reutilizables para solicitar y validar valores.
-  * Funciones para crear, modificar, eliminar y mostrar información.
-  * Separación de responsabilidades mediante funciones.
-
-* **Estructuras de control**
-
-  * `if`, `elif` y `else` para tomar decisiones.
-  * `while` para repetir solicitudes hasta obtener datos válidos.
-  * `for` para recorrer categorías y gastos.
-
-* **Listas y diccionarios**
-
-  * Listas para almacenar categorías y sus respectivos gastos.
-  * Diccionarios para organizar las categorías y gastos asociados.
-
-* **Manejo de errores**
-
-  * `try/except` para controlar entradas incorrectas.
-  * Manejo de `ValueError`.
-  * Manejo de `ZeroDivisionError`.
-  * Validación de opciones introducidas por el usuario.
-
-* **Colores en consola**
-
-  * Uso de códigos ANSI para mejorar la presentación.
-  * Rojo para errores y situaciones negativas.
-  * Verde para resultados positivos.
-  * Amarillo para advertencias.
-  * Cian para títulos y secciones.
-
-* **Modularización**
-
-  * División del proyecto en diferentes módulos `.py`.
-  * Separación de la lógica según su responsabilidad.
-  * Uso de `import` para utilizar funciones y variables de otros módulos.
+Actualmente, cada usuario puede disponer de su propio historial de presupuestos, almacenado permanentemente en archivos JSON.
 
 ---
 
-## 📁 Estructura del proyecto
+# 🚀 Versión actual
 
-La versión 3 divide el programa en diferentes módulos:
+**Versión 4**
+
+La Versión 4 introduce un cambio importante en el funcionamiento del programa: los presupuestos ya no existen únicamente durante la ejecución.
+
+Ahora la información se almacena en archivos `.json`, permitiendo conservar los datos después de cerrar el programa y mantener un historial organizado por meses.
+
+Cada usuario posee su propio archivo:
+
+```text
+presupuesto_gabriel.json
+presupuesto_maite.json
+presupuesto_tomas.json
+```
+
+Dentro de cada archivo pueden almacenarse múltiples presupuestos mensuales.
+
+---
+
+# ✨ Características principales
+
+* 💰 Registro de ingresos mensuales.
+* 📂 Categorías básicas de gastos.
+* ➕ Categorías personalizadas.
+* ✏️ Modificación de gastos.
+* 🗑️ Eliminación de gastos.
+* 📊 Cálculo de gastos totales.
+* 💵 Cálculo de dinero restante.
+* 📈 Cálculo del porcentaje gastado.
+* 🔍 Análisis individual de cada categoría.
+* 🎨 Colores en consola.
+* 🛡️ Validación de datos.
+* 📁 Persistencia mediante archivos JSON.
+* 👤 Historial independiente para cada usuario.
+* 📅 Detección automática del mes y año.
+* 🗃️ Historial de presupuestos mensuales.
+* 🔄 Carga automática de presupuestos existentes.
+* 💾 Guardado permanente de modificaciones.
+* 📊 Comparación entre meses.
+* 📉 Comparación de gastos por categoría.
+* 💰 Comparación de ingresos.
+* 💵 Comparación del dinero restante.
+* 🧩 Código dividido en diferentes módulos.
+
+---
+
+# 🧠 Conceptos utilizados
+
+Durante el desarrollo del proyecto se practican los siguientes conceptos de Python.
+
+## Datos primitivos
+
+* `str` para nombres, categorías y textos.
+* `int` para valores como el mes y el año.
+* `float` para ingresos y gastos.
+* `None` para representar datos inexistentes o resultados que no pueden calcularse.
+
+## Operaciones matemáticas
+
+* Suma de gastos.
+* Resta entre ingresos y gastos.
+* Diferencia entre presupuestos.
+* División y multiplicación para calcular porcentajes.
+
+## Manipulación de números
+
+* Conversión de datos mediante `int()` y `float()`.
+* Formateo de cantidades monetarias utilizando `:.2f`.
+* Cálculo de porcentajes.
+* Cálculo de diferencias positivas y negativas.
+
+## F-Strings
+
+Se utilizan para:
+
+* Insertar variables dentro de textos.
+* Mostrar cantidades monetarias.
+* Formatear números con dos decimales.
+* Alinear columnas en las comparaciones.
+* Crear nombres dinámicos de archivos.
+
+Por ejemplo:
+
+```python
+nombre_archivo = f"presupuesto_{nombre.lower()}.json"
+```
+
+## Funciones
+
+El programa utiliza funciones reutilizables para:
+
+* Solicitar datos.
+* Validar valores.
+* Agregar categorías.
+* Calcular gastos.
+* Mostrar presupuestos.
+* Modificar gastos.
+* Eliminar gastos.
+* Comparar presupuestos.
+* Cargar archivos.
+* Guardar archivos.
+
+## Estructuras de control
+
+Se utilizan:
+
+* `if`
+* `elif`
+* `else`
+* `while`
+* `for`
+
+Estas estructuras permiten controlar el menú, validar información, recorrer categorías y gestionar diferentes situaciones del presupuesto.
+
+## Listas
+
+Las listas almacenan las categorías y sus respectivos gastos.
+
+Por ejemplo:
+
+```python
+categorias = [
+    "Alquiler",
+    "Comida",
+    "Transporte"
+]
+
+gastos = [
+    10000,
+    2000,
+    1700
+]
+```
+
+Cada posición de `categorias` corresponde con la misma posición de `gastos`.
+
+## Diccionarios
+
+Los diccionarios permiten organizar la información de cada usuario y sus presupuestos.
+
+Por ejemplo:
+
+```python
+datos = {
+    "nombre": "Gabriel",
+    "presupuestos": {}
+}
+```
+
+## Manejo de errores
+
+Se utilizan mecanismos como:
+
+* `try/except`
+* `ValueError`
+* `FileNotFoundError`
+* Validación de opciones.
+* Validación de números negativos.
+* Control de divisiones entre cero.
+* Comprobación de historiales inexistentes.
+
+## Archivos JSON
+
+La Versión 4 incorpora archivos `.json` para almacenar permanentemente los presupuestos.
+
+Se utilizan:
+
+```python
+json.load()
+```
+
+para cargar información y:
+
+```python
+json.dump()
+```
+
+para guardarla.
+
+## Módulo `datetime`
+
+Se utiliza `datetime` para detectar automáticamente la fecha actual:
+
+```python
+from datetime import datetime
+
+fecha_actual = datetime.now()
+
+mes = fecha_actual.month
+anio = fecha_actual.year
+```
+
+Esto permite registrar automáticamente presupuestos con identificadores como:
+
+```text
+9-2026
+10-2026
+11-2026
+```
+
+sin solicitar el mes o el año al usuario.
+
+## Modularización
+
+El programa está dividido en diferentes archivos `.py`, separando responsabilidades y evitando concentrar toda la lógica en `main.py`.
+
+---
+
+# 📁 Estructura del proyecto
+
+La Versión 4 utiliza la siguiente estructura:
 
 ```text
 Calculadora-Presupuesto/
@@ -85,228 +227,593 @@ Calculadora-Presupuesto/
 ├── main.py
 ├── funciones.py
 ├── prespuesto.py
-└── configuracion.py
+├── manejar_archivos.py
+├── configuracion.py
+│
+└── datos/
+    ├── presupuesto_gabriel.json
+    ├── presupuesto_maite.json
+    └── ...
 ```
 
-### `main.py`
+## `main.py`
 
-Contiene el flujo principal de la aplicación y el menú de opciones.
-
-Se encarga de:
-
-* Mostrar el menú principal.
-* Recibir la opción del usuario.
-* Ejecutar las funciones correspondientes.
-* Controlar el flujo general del programa.
-
-### `prespuesto.py`
-
-Contiene la lógica relacionada con el presupuesto.
+Contiene el flujo principal de la aplicación.
 
 Se encarga de:
 
-* Almacenar los ingresos.
-* Gestionar las categorías.
-* Agregar categorías.
+* Mostrar el menú.
+* Recibir la opción seleccionada.
+* Detectar automáticamente el mes y año actual.
+* Coordinar las funciones de los demás módulos.
+* Crear nuevos presupuestos.
+* Cargar historiales existentes.
+* Ejecutar las opciones de consulta, modificación, eliminación y comparación.
+
+## `prespuesto.py`
+
+Contiene la lógica principal relacionada con los presupuestos.
+
+Se encarga de:
+
+* Solicitar ingresos.
+* Solicitar los datos de un usuario.
+* Gestionar categorías.
 * Registrar gastos.
-* Mostrar el presupuesto.
+* Mostrar el presupuesto actual.
 * Modificar gastos.
 * Eliminar gastos.
-* Calcular el dinero restante.
+* Calcular gastos totales.
+* Calcular dinero restante.
+* Comparar presupuestos.
+* Comparar diferencias entre valores.
 
-### `funciones.py`
+## `funciones.py`
 
 Contiene funciones reutilizables y utilidades generales.
 
 Se encarga de:
 
-* Validar números enteros.
-* Validar números decimales.
+* Validar números.
+* Solicitar valores numéricos.
 * Calcular porcentajes.
 * Limpiar la consola.
-* Comprobar si existen gastos.
+* Seleccionar categorías.
 * Validar opciones.
-* Permitir volver al menú.
+* Permitir regresar al menú principal.
 
-### `configuracion.py`
+## `manejar_archivos.py`
+
+Nuevo módulo encargado de la persistencia de datos.
+
+Se encarga de:
+
+* Crear presupuestos dentro del historial.
+* Cargar archivos JSON.
+* Guardar archivos JSON.
+* Actualizar información existente.
+* Generar archivos independientes para cada usuario.
+* Trabajar con la carpeta `datos/`.
+* Manejar historiales inexistentes mediante `FileNotFoundError`.
+
+## `configuracion.py`
 
 Contiene las constantes utilizadas para los colores de la consola.
 
+Los colores permiten diferenciar:
+
+* Errores.
+* Advertencias.
+* Resultados positivos.
+* Títulos.
+* Secciones importantes.
+
 ---
 
-## ⚙️ ¿Cómo funciona?
+# 🗃️ Estructura de los datos
 
-Al iniciar el programa se muestra un menú principal:
+Cada usuario dispone de su propio archivo JSON.
+
+Por ejemplo:
+
+```text
+datos/presupuesto_gabriel.json
+```
+
+Su estructura puede ser:
+
+```json
+{
+    "nombre": "Gabriel",
+    "presupuestos": {
+        "8-2026": {
+            "ingresos": 30000.0,
+            "categorias": [
+                "Alquiler",
+                "Comida",
+                "Transporte",
+                "Internet"
+            ],
+            "gastos": [
+                10000.0,
+                2500.0,
+                1800.0,
+                1500.0
+            ]
+        },
+        "9-2026": {
+            "ingresos": 32000.0,
+            "categorias": [
+                "Alquiler",
+                "Comida",
+                "Transporte",
+                "Internet"
+            ],
+            "gastos": [
+                10000.0,
+                2000.0,
+                1700.0,
+                1500.0
+            ]
+        }
+    }
+}
+```
+
+De esta forma, un único archivo contiene todo el historial financiero del usuario.
+
+---
+
+# ⚙️ ¿Cómo funciona?
+
+Al iniciar el programa aparece el menú principal:
 
 ```text
 ========== CALCULADORA DE PRESUPUESTO ==========
 
 Introduce una opción:
+
 1. Crear nuevo presupuesto
 2. Ver presupuesto actual
 3. Modificar gastos
 4. Eliminar gasto
-5. Salir
+5. Comparaciones
+6. Salir
 ```
 
-### 1. Crear un nuevo presupuesto
+---
 
-Al seleccionar esta opción, el programa solicita:
+# 1️⃣ Crear nuevo presupuesto
 
-1. Nombre.
-2. Edad.
-3. Ingresos mensuales.
-4. Gastos de alquiler.
-5. Gastos de comida.
-6. Gastos de transporte.
-7. Categorías adicionales de gastos.
+El programa solicita el nombre del usuario.
 
-Las tres categorías iniciales son:
+```text
+========== CREAR UN NUEVO PRESUPUESTO ==========
+
+Introduce tu nombre: Gabriel
+```
+
+A continuación intenta cargar:
+
+```text
+presupuesto_gabriel.json
+```
+
+Si el archivo no existe:
+
+```text
+No se encontró el historial, se creará uno nuevo
+```
+
+El programa crea una estructura nueva:
+
+```python
+{
+    "nombre": "Gabriel",
+    "presupuestos": {}
+}
+```
+
+Si el archivo ya existe:
+
+```text
+Historial encontrado
+```
+
+y se cargan los presupuestos anteriores.
+
+Esto permite agregar un nuevo mes sin eliminar el historial existente.
+
+## Ingresos
+
+El programa solicita:
+
+```text
+Introduce tus ingresos mensuales: 32000
+```
+
+## Categorías básicas
+
+Todos los presupuestos comienzan con:
 
 * Alquiler
 * Comida
 * Transporte
 
-También se pueden agregar categorías personalizadas.
+El usuario introduce el gasto correspondiente a cada una.
 
-Por ejemplo:
+```text
+¿Cuánto gastas en alquiler? 10000
+¿Cuánto gastas en comida? 2000
+¿Cuánto gastas en transporte? 1700
+```
+
+## Categorías adicionales
+
+También pueden agregarse categorías personalizadas:
 
 ```text
 ¿Tienes más categorias de gastos? si
 
-Nombre de la categoria: Internet
+Nombre de la categoría: Internet
 
 ¿Cuánto gastas en Internet? 1500
-
-¿Tienes más categorias de gastos? si
-
-Nombre de la categoria: Gimnasio
-
-¿Cuánto gastas en Gimnasio? 2000
-
-¿Tienes más categorias de gastos? no
 ```
 
-Si se introduce una categoría que ya existe, el programa suma el nuevo gasto al importe existente.
+Si la categoría ya existe, el nuevo importe se suma al gasto existente.
+
+## Fecha automática
+
+El usuario no necesita introducir el mes ni el año.
+
+El programa obtiene automáticamente la fecha mediante `datetime`.
+
+Por ejemplo, si se ejecuta durante septiembre de 2026:
+
+```text
+9-2026
+```
+
+El presupuesto se guarda dentro del historial utilizando esa clave.
 
 ---
 
-### 2. Ver presupuesto actual
+# 2️⃣ Ver presupuesto actual
 
-Permite visualizar toda la información del presupuesto actual:
+Esta opción solicita el nombre:
+
+```text
+========== VER PRESUPUESTO ACTUAL ==========
+
+Introduce tu nombre: Gabriel
+```
+
+El programa carga el archivo correspondiente y obtiene el último presupuesto registrado.
+
+Ejemplo:
 
 ```text
 ========== VER PRESUPUESTO ACTUAL ==========
 
 NOMBRE: Gabriel
-EDAD: 27
+MES: 9-2026
 
 Alquiler: $10000.00
-Comida: $6000.00
-Transporte: $2500.00
+Comida: $2000.00
+Transporte: $1700.00
 Internet: $1500.00
 
 ========== RESUMEN ==========
 
-Ingresos: $35000.00
-Gastos totales: $20000.00
-Dinero restante: $15000.00
-Porcentaje gastado: 57.14%
+Ingresos: $32000.00
+Gastos totales: $15200.00
+Dinero restante: $16800.00
+Porcentaje gastado: 47.50%
+
+¡Te quedan $16800.00 este mes!
+
+========== RESUMEN DE GASTOS ==========
+
+Te ha sobrado: $16800.00
+
+========== ANALISIS ==========
+
+Has gastado menos de la mitad de tus ingresos
+
+========== ANALISIS DE CADA GASTO ==========
+
+Alquiler gastó 31.25%
+Comida gastó 6.25%
+Transporte gastó 5.31%
+Internet gastó 4.69%
 ```
 
-También muestra un análisis general de los gastos y el porcentaje que representa cada categoría respecto a los ingresos.
+Los datos ya no dependen de variables temporales de la ejecución.
+
+Son obtenidos directamente del historial almacenado.
 
 ---
 
-### 3. Modificar gastos
+# 3️⃣ Modificar gastos
 
-El usuario puede seleccionar una categoría existente y establecer un nuevo importe.
+El usuario introduce su nombre y el programa carga su historial.
+
+Después se obtiene el último presupuesto registrado y se muestran sus categorías.
 
 Por ejemplo:
 
 ```text
-0. Alquiler: $10000
-1. Comida: $6000
-2. Transporte: $2500
+0. Alquiler: $10000.0
+1. Comida: $2000.0
+2. Transporte: $1700.0
+3. Internet: $1500.0
 
 Elige una categoría según su número: 1
 
-¿Cuánto gastas en Comida? 7000
+¿Cuánto gastas en Comida? 1500
 
 Gasto modificado correctamente
 ```
 
-El gasto anterior se reemplaza por el nuevo valor.
+El valor anterior se sustituye:
+
+```text
+Comida: $2000
+```
+
+por:
+
+```text
+Comida: $1500
+```
+
+Después se utiliza `guardar_datos()` para escribir nuevamente el historial en el archivo JSON.
+
+Por lo tanto, la modificación permanece incluso después de cerrar el programa.
 
 ---
 
-### 4. Eliminar gastos
+# 4️⃣ Eliminar gasto
 
-Permite seleccionar una categoría y eliminarla junto con su gasto correspondiente.
+Esta opción también trabaja directamente sobre el presupuesto almacenado.
+
+El usuario selecciona una categoría:
 
 ```text
 0. Alquiler: $10000
-1. Comida: $6000
-2. Transporte: $2500
+1. Comida: $1500
+2. Transporte: $1700
+3. Internet: $1500
 
-Elige una categoría según su número: 2
+Elige una categoría según su número: 3
+```
 
+El programa elimina tanto:
+
+```python
+categorias.pop(opcion_categoria)
+```
+
+como:
+
+```python
+gastos.pop(opcion_categoria)
+```
+
+manteniendo ambas listas sincronizadas.
+
+Después se guarda nuevamente el archivo JSON.
+
+```text
 Gasto eliminado correctamente
 ```
 
-Las categorías y los gastos se mantienen sincronizados para evitar errores al acceder a sus posiciones.
+---
+
+# 5️⃣ Comparaciones
+
+La Versión 4 incorpora un sistema para comparar los dos últimos presupuestos registrados.
+
+El usuario introduce su nombre:
+
+```text
+========== COMPARAR PRESUPUESTO ==========
+
+Ingresa tu nombre: Gabriel
+```
+
+El programa carga el historial y obtiene:
+
+* El último mes registrado.
+* El mes inmediatamente anterior.
+
+Por ejemplo:
+
+```text
+9-2026
+8-2026
+```
+
+## Comparación de ingresos
+
+```text
+Mes actual:          $32000.00
+Mes anterior:        $30000.00
+Diferencia:          +$2000.00
+```
+
+Una diferencia positiva se representa mediante:
+
+```text
++$2000.00
+```
+
+Una diferencia negativa:
+
+```text
+-$500.00
+```
+
+Y cuando no existe diferencia:
+
+```text
+$0.00
+```
+
+## Comparación por categorías
+
+El programa compara las categorías presentes en ambos presupuestos.
+
+No depende de que una categoría ocupe la misma posición en ambos meses.
+
+Primero obtiene el nombre de la categoría y después busca su posición correspondiente en el presupuesto anterior.
+
+Esto permite comparar correctamente estructuras como:
+
+```text
+Mes actual:
+Alquiler
+Comida
+Transporte
+Internet
+
+Mes anterior:
+Alquiler
+Transporte
+Comida
+```
+
+aunque las posiciones sean diferentes.
+
+Las categorías que no existen en el presupuesto anterior actualmente no se incluyen en la comparación.
+
+## Tabla comparativa
+
+La información se presenta en forma de tabla:
+
+```text
+================================================================================
+CATEGORIA                     9-2026          8-2026      DIFERENCIA
+================================================================================
+Alquiler                    $10000.00       $10000.00           $0.00
+Comida                       $2000.00        $2500.00        -$500.00
+Transporte                   $1700.00        $1800.00        -$100.00
+--------------------------------------------------------------------------------
+TOTAL                       $15200.00       $15800.00        -$600.00
+================================================================================
+```
+
+## Comparación del dinero restante
+
+También se compara cuánto dinero quedó disponible en cada mes:
+
+```text
+Restante mes actual:        $16800.00
+Restante mes anterior:      $14200.00
+Diferencia de restantes:     +$2600.00
+```
+
+Esto permite observar rápidamente si la situación financiera mejoró o empeoró respecto al mes anterior.
+
+## Validación de meses
+
+Para realizar una comparación deben existir al menos dos presupuestos.
+
+Si solamente existe uno:
+
+```text
+No hay suficientes meses para realizar la comparación
+```
+
+De esta forma se evita intentar acceder a un mes anterior inexistente.
 
 ---
 
-### 5. Salir
+# 6️⃣ Salir
 
 Finaliza la ejecución del programa y limpia la consola.
 
 ---
 
-## 🧮 Cálculos realizados
+# 🧮 Cálculos realizados
 
-### Gastos totales
+## Gastos totales
 
 ```text
 Gastos totales = suma de todos los gastos
 ```
 
-Incluye las categorías básicas y todas las categorías adicionales.
+En Python:
 
-### Dinero restante
+```python
+gastos_totales = sum(todos_los_gastos)
+```
+
+## Dinero restante
 
 ```text
 Dinero restante = ingresos - gastos totales
 ```
 
-### Porcentaje gastado
+## Porcentaje gastado
 
 ```text
 Porcentaje gastado = gastos totales / ingresos × 100
 ```
 
-También se calcula el porcentaje que representa cada categoría individual respecto a los ingresos.
+## Porcentaje por categoría
 
-Si los ingresos son `0`, el porcentaje no puede calcularse y la función devuelve `None`.
+Cada gasto también se compara individualmente con los ingresos:
+
+```text
+Porcentaje de categoría = gasto de categoría / ingresos × 100
+```
+
+## Diferencia entre meses
+
+```text
+Diferencia = valor actual - valor anterior
+```
+
+Si el resultado es positivo:
+
+```text
++$500.00
+```
+
+Si es negativo:
+
+```text
+-$500.00
+```
+
+Si ambos valores son iguales:
+
+```text
+$0.00
+```
 
 ---
 
-## 🛡️ Validación de datos
+# 🛡️ Validación de datos
 
-El programa valida los datos introducidos por el usuario para evitar errores.
+El programa valida diferentes situaciones para evitar errores durante la ejecución.
+
+## Valores no numéricos
 
 Si se introduce texto cuando se espera un número:
 
 ```text
-Introduce tu edad: abc
+Introduce tus ingresos mensuales: hola
 
-Error, la edad debe ser un número entero
+Error, los ingresos son inválidos
 ```
 
-El programa vuelve a solicitar el dato hasta recibir un valor válido.
+El programa vuelve a solicitar el dato.
 
-También se evita introducir valores negativos:
+## Números negativos
+
+No se permiten cantidades negativas para ingresos o gastos.
 
 ```text
 ¿Cuánto gastas en comida? -500
@@ -314,185 +821,300 @@ También se evita introducir valores negativos:
 Error, el número debe ser positivo
 ```
 
-La edad debe ser un número entero mayor que `0`, mientras que los ingresos y gastos pueden ser `0`.
+## Usuario inexistente
 
-Las opciones del menú también son validadas para impedir que el usuario introduzca valores que no correspondan a una opción disponible.
+Si se intenta consultar un usuario cuyo archivo no existe:
+
+```text
+Introduce tu nombre: Tomas
+
+No se encontraron datos con el nombre
+```
+
+`cargar_datos()` captura `FileNotFoundError` y devuelve `None`.
+
+## Ingresos iguales a cero
+
+Cuando los ingresos son `0`, no puede calcularse correctamente un porcentaje.
+
+En ese caso la función correspondiente devuelve `None`.
+
+## Comparación sin historial suficiente
+
+Si existen menos de dos meses:
+
+```text
+No hay suficientes meses para realizar la comparación
+```
+
+## Opciones incorrectas
+
+El menú comprueba que la opción introducida sea numérica y corresponda con una opción disponible.
 
 ---
 
-## 📊 Análisis de gastos
+# 📊 Análisis de gastos
 
-El programa analiza el porcentaje de ingresos utilizado y muestra diferentes mensajes según el resultado:
+El programa analiza qué porcentaje de los ingresos se ha utilizado.
 
 * **0%:** No se ha gastado nada.
 * **Menos del 50%:** Se ha gastado menos de la mitad de los ingresos.
 * **50%:** Se ha gastado exactamente la mitad.
 * **Entre 50% y 100%:** Se muestra una advertencia.
 * **100%:** Se han utilizado todos los ingresos.
-* **Más del 100%:** Los gastos superan los ingresos.
+* **Más del 100%:** Los gastos han superado los ingresos.
 
-También se informa si al usuario le sobra dinero, queda exactamente en `0` o ha gastado más de sus ingresos.
+También informa si:
 
----
-
-## 🖥️ Ejemplo de ejecución
-
-```text
-========== CALCULADORA DE PRESUPUESTO ==========
-
-Introduce una opción:
-1. Crear nuevo presupuesto
-2. Ver presupuesto actual
-3. Modificar gastos
-4. Eliminar gasto
-5. Salir
-
-========== ELIGE UNA OPCIÓN ==========
-1
-
-========== CREAR UN NUEVO PRESUPUESTO ==========
-
-Introduce tu nombre: Gabriel
-Introduce tu edad: 27
-Introduce tus ingresos mensuales: 35000
-
-GASTOS MENSUALES
-
-¿Cuánto gastas en alquiler? 10000
-¿Cuánto gastas en comida? 6000
-¿Cuánto gastas en transporte? 2500
-
-¿Tienes más categorias de gastos? si
-
-Nombre de la categoria: Internet
-¿Cuánto gastas en Internet? 1500
-
-¿Tienes más categorias de gastos? no
-```
-
-Posteriormente, al seleccionar **Ver presupuesto actual**:
-
-```text
-========== VER PRESUPUESTO ACTUAL ==========
-
-NOMBRE: Gabriel
-EDAD: 27
-
-Alquiler: $10000.00
-Comida: $6000.00
-Transporte: $2500.00
-Internet: $1500.00
-
-========== RESUMEN ==========
-
-Nombre: Gabriel
-Edad: 27 años
-
-Ingresos: $35000.00
-Gastos totales: $20000.00
-Dinero restante: $15000.00
-Porcentaje gastado: 57.14%
-
-========== RESUMEN DE GASTOS ==========
-
-Te ha sobrado: $15000.00
-
-========== ANALISIS ==========
-
-¡Cuidado, has utilizado una gran parte de tus ingresos!
-
-========== ANALISIS DE CADA GASTO ==========
-
-Alquiler gastó 28.57%
-Comida gastó 17.14%
-Transporte gastó 7.14%
-Internet gastó 4.29%
-```
+* Sobró dinero.
+* El presupuesto terminó exactamente en `0`.
+* Se gastó más dinero del disponible.
 
 ---
 
-## 🧪 Pruebas realizadas
+# 💾 Persistencia de datos
 
-La versión 3 fue probada mediante diferentes casos de uso para comprobar el funcionamiento del programa.
+Una de las principales novedades de la Versión 4 es la persistencia.
 
-Se ejecutaron correctamente **12 casos de prueba**:
+Anteriormente, los datos solamente existían mientras el programa estaba ejecutándose.
 
-* [x] Crear un presupuesto básico.
-* [x] Crear un presupuesto con categorías adicionales.
-* [x] Agregar una categoría existente.
+Ahora el flujo es:
+
+```text
+Usuario introduce nombre
+        ↓
+Buscar archivo JSON
+        ↓
+¿Existe?
+   ↓          ↓
+  Sí          No
+   ↓          ↓
+Cargar      Crear historial
+   ↓          ↓
+Modificar datos
+        ↓
+Guardar JSON
+```
+
+Esto permite cerrar completamente el programa y recuperar posteriormente toda la información.
+
+---
+
+# 👤 Historial independiente por usuario
+
+Cada persona dispone de un archivo separado.
+
+Por ejemplo:
+
+```text
+datos/
+│
+├── presupuesto_gabriel.json
+├── presupuesto_maite.json
+├── presupuesto_tomas.json
+└── presupuesto_lucia.json
+```
+
+Esto evita mezclar los presupuestos de diferentes usuarios.
+
+---
+
+# 📅 Historial mensual
+
+Dentro de cada archivo, los presupuestos se organizan por mes y año:
+
+```json
+"presupuestos": {
+    "7-2026": {},
+    "8-2026": {},
+    "9-2026": {}
+}
+```
+
+Esto permite construir progresivamente un historial financiero sin eliminar los meses anteriores.
+
+---
+
+# 🧪 Pruebas realizadas
+
+Durante el desarrollo se comprobaron diferentes situaciones:
+
+* [x] Crear un presupuesto para un usuario nuevo.
+* [x] Crear automáticamente su archivo JSON.
+* [x] Detectar un historial existente.
+* [x] Agregar un nuevo presupuesto al historial.
+* [x] Mantener los presupuestos anteriores.
+* [x] Detectar automáticamente el mes y año.
+* [x] Crear categorías básicas.
+* [x] Crear categorías adicionales.
+* [x] Agregar gastos.
+* [x] Visualizar el último presupuesto.
+* [x] Cargar datos después de reiniciar el programa.
+* [x] Modificar un gasto existente.
+* [x] Guardar permanentemente una modificación.
+* [x] Eliminar una categoría.
+* [x] Eliminar su gasto correspondiente.
+* [x] Guardar permanentemente una eliminación.
+* [x] Consultar un usuario inexistente.
+* [x] Comparar dos meses.
+* [x] Comparar ingresos.
+* [x] Comparar gastos por categoría.
+* [x] Comparar categorías aunque tengan posiciones diferentes.
+* [x] Calcular diferencias positivas.
+* [x] Calcular diferencias negativas.
+* [x] Comparar gastos totales.
+* [x] Comparar dinero restante.
+* [x] Intentar comparar un historial con menos de dos meses.
+* [x] Validar entradas incorrectas.
+* [x] Validar números negativos.
+* [x] Validar opciones inexistentes del menú.
+
+---
+
+# 🗺️ Evolución del proyecto
+
+## Versión 1
+
+* [x] Solicitar ingresos.
+* [x] Registrar gastos básicos.
+* [x] Calcular gastos totales.
+* [x] Calcular dinero restante.
+* [x] Mostrar un resumen básico del presupuesto.
+
+## Versión 2
+
+* [x] Agregar validación de datos.
+* [x] Evitar números negativos.
+* [x] Manejar ingresos iguales a `0`.
+* [x] Agregar categorías personalizadas.
+* [x] Permitir acumular gastos en categorías existentes.
+* [x] Crear funciones reutilizables.
+* [x] Calcular porcentajes.
+* [x] Analizar el porcentaje utilizado de los ingresos.
+* [x] Agregar colores ANSI.
+* [x] Mejorar la presentación de la consola.
+
+## Versión 3
+
+* [x] Crear un menú principal.
+* [x] Permitir repetir operaciones sin reiniciar el programa.
 * [x] Visualizar el presupuesto actual.
-* [x] Modificar un gasto.
-* [x] Eliminar un gasto.
-* [x] Introducir datos inválidos.
-* [x] Introducir números negativos.
-* [x] Seleccionar una opción inexistente.
-* [x] Salir del programa.
-* [x] Intentar acceder al presupuesto antes de crear uno.
-* [x] Eliminar todas las categorías y comprobar el funcionamiento posterior.
+* [x] Modificar gastos.
+* [x] Eliminar gastos.
+* [x] Analizar individualmente cada categoría.
+* [x] Separar el proyecto en módulos.
+* [x] Crear `funciones.py`.
+* [x] Crear `prespuesto.py`.
+* [x] Crear `configuracion.py`.
+* [x] Mejorar la organización de las funciones.
+* [x] Validar las opciones del menú.
 
-Todas las pruebas fueron ejecutadas correctamente.
+## Versión 4
+
+* [x] Implementar persistencia de datos.
+* [x] Utilizar archivos JSON.
+* [x] Crear un archivo independiente por usuario.
+* [x] Crear la carpeta `datos/`.
+* [x] Crear `manejar_archivos.py`.
+* [x] Cargar historiales existentes.
+* [x] Crear automáticamente historiales nuevos.
+* [x] Detectar automáticamente el mes y año.
+* [x] Guardar múltiples meses por usuario.
+* [x] Mantener los presupuestos anteriores.
+* [x] Eliminar la edad al no ser necesaria.
+* [x] Mostrar información directamente desde los datos almacenados.
+* [x] Modificar gastos almacenados.
+* [x] Guardar permanentemente las modificaciones.
+* [x] Eliminar gastos almacenados.
+* [x] Guardar permanentemente las eliminaciones.
+* [x] Eliminar la dependencia de estructuras globales para categorías y gastos.
+* [x] Agregar comparación entre meses.
+* [x] Comparar ingresos.
+* [x] Comparar categorías comunes.
+* [x] Comparar gastos totales.
+* [x] Comparar dinero restante.
+* [x] Mostrar diferencias positivas y negativas.
+* [x] Crear tablas comparativas en consola.
+* [x] Validar que existan suficientes meses para comparar.
+* [x] Mejorar la separación de responsabilidades entre módulos.
 
 ---
 
-## 🔮 Posibles mejoras y futuras versiones
+# 🔮 Futuras versiones
 
-### Versión 2
+## Versión 5
 
-* [x] Agregar validación de datos para evitar errores cuando el usuario introduce texto donde debería introducir un número.
-* [x] Evitar que se introduzcan valores negativos en ingresos o gastos.
-* [x] Utilizar `if/else` para mostrar diferentes mensajes dependiendo del dinero restante.
-* [x] Mejorar el formato visual de la consola.
-* [x] Permitir introducir más categorías de gastos.
-* [x] Mostrar las categorías adicionales junto con sus respectivos gastos.
-* [x] Manejar el caso en que los ingresos sean `0`.
-* [x] Analizar los gastos según el porcentaje de ingresos utilizado.
-* [x] Crear funciones reutilizables para validar valores enteros y decimales.
-* [x] Utilizar colores para diferenciar errores, advertencias y resultados positivos.
+* [ ] Permitir seleccionar manualmente los meses que se quieren comparar.
+* [ ] Consultar cualquier mes almacenado en el historial.
+* [ ] Mostrar categorías que existen únicamente en uno de los meses.
+* [ ] Detectar la categoría con mayor y menor gasto.
+* [ ] Calcular promedios mensuales.
+* [ ] Calcular el promedio histórico de cada categoría.
+* [ ] Crear estadísticas sobre la evolución financiera.
+* [ ] Implementar límites de gasto por categoría.
 
-### Versión 3
+## Versión 6
 
-* [x] Agregar un menú principal.
-* [x] Permitir registrar varios gastos.
-* [x] Separar los gastos en categorías.
-* [x] Calcular qué porcentaje de los ingresos representa cada categoría.
-* [x] Agregar una opción para modificar gastos.
-* [x] Agregar una opción para eliminar gastos.
-* [x] Permitir repetir los cálculos sin reiniciar el programa.
-* [x] Mejorar la organización del código mediante funciones.
-* [x] Separar el proyecto en diferentes módulos.
-* [x] Crear un módulo para las funciones reutilizables.
-* [x] Crear un módulo para la configuración de colores.
-* [x] Crear un módulo dedicado a la gestión del presupuesto.
-* [x] Validar las opciones introducidas en los menús.
-* [x] Permitir crear nuevamente un presupuesto sin conservar los datos del anterior.
+* [ ] Implementar metas de ahorro.
+* [ ] Permitir establecer un objetivo mensual de ahorro.
+* [ ] Analizar si el usuario está cumpliendo sus objetivos.
+* [ ] Generar recomendaciones basadas en el historial.
+* [ ] Detectar aumentos importantes de gastos.
+* [ ] Detectar gastos recurrentes.
+* [ ] Mejorar los reportes financieros.
+* [ ] Incorporar diferentes monedas.
 
-### Versión 4
-
-* [ ] Guardar los datos en un archivo.
-* [ ] Cargar los datos cuando se vuelva a iniciar el programa.
-* [ ] Utilizar archivos `.json` para almacenar la información.
-* [ ] Crear un historial de presupuestos mensuales.
-* [ ] Comparar los gastos de diferentes meses.
-
-### Futuras mejoras
+## Versión 7
 
 * [ ] Implementar programación orientada a objetos.
-* [ ] Crear gráficos para visualizar los gastos.
+* [ ] Crear clases para usuarios y presupuestos.
+* [ ] Mejorar la arquitectura interna del proyecto.
+* [ ] Crear gráficos de gastos.
+* [ ] Crear gráficos de evolución mensual.
+* [ ] Crear gráficos por categoría.
+* [ ] Exportar reportes.
+* [ ] Preparar el proyecto para una interfaz gráfica.
+
+## Versión 8
+
 * [ ] Crear una interfaz gráfica.
+* [ ] Crear formularios para registrar presupuestos.
+* [ ] Mostrar gráficos dentro de la aplicación.
+* [ ] Crear una vista del historial.
+* [ ] Crear un panel financiero.
+* [ ] Permitir navegar entre diferentes meses.
+* [ ] Mejorar la experiencia de usuario.
+* [ ] Reducir la dependencia de la consola.
+
+## Versión 9
+
 * [ ] Convertir el proyecto en una aplicación web.
-* [ ] Agregar diferentes monedas.
-* [ ] Crear un sistema de metas de ahorro.
-* [ ] Calcular cuánto dinero podría ahorrarse al mes.
-* [ ] Crear recomendaciones basadas en los gastos del usuario.
-* [ ] Permitir establecer límites de gasto por categoría.
-* [ ] Mostrar las categorías que representan la mayor parte de los gastos.
+* [ ] Crear cuentas de usuario.
+* [ ] Implementar autenticación.
+* [ ] Utilizar una base de datos.
+* [ ] Crear un dashboard financiero.
+* [ ] Acceder al historial desde diferentes dispositivos.
+* [ ] Generar reportes financieros desde la web.
+* [ ] Convertir el proyecto en una aplicación de gestión financiera más completa.
 
 ---
 
-## 📚 Objetivo del proyecto
+# 📚 Objetivo del proyecto
 
-El objetivo principal es practicar los fundamentos de Python mediante un proyecto sencillo y funcional, construyendo progresivamente nuevas versiones a medida que se aprenden conceptos más avanzados del lenguaje.
+El objetivo principal de **Calculadora de Presupuesto Personal** es aprender Python mediante el desarrollo progresivo de una aplicación real.
 
-La **versión 3** incorpora un **menú principal, gestión completa de categorías y gastos, modificación y eliminación de gastos, análisis individual de categorías, validación de opciones, posibilidad de crear nuevos presupuestos y una estructura modular dividida en diferentes archivos Python**.
+En lugar de limitarse a ejercicios aislados, cada versión introduce nuevos problemas y conceptos que requieren reorganizar y ampliar el código existente.
 
-Este proyecto forma parte del proceso de aprendizaje y puede utilizarse como base para desarrollar posteriormente una aplicación de gestión financiera más completa.
+La **Versión 4** representa uno de los cambios más importantes del proyecto hasta el momento, incorporando:
+
+* Persistencia mediante JSON.
+* Historiales independientes por usuario.
+* Presupuestos organizados por mes.
+* Detección automática de fechas.
+* Lectura y escritura de archivos.
+* Modificación persistente de información.
+* Comparación entre diferentes meses.
+* Análisis de la evolución de ingresos y gastos.
+* Una estructura modular con responsabilidades mejor separadas.
+
+El proyecto sirve como base para continuar avanzando hacia conceptos más complejos como **programación orientada a objetos, estadísticas financieras, gráficos, bases de datos, interfaces gráficas y desarrollo web**.

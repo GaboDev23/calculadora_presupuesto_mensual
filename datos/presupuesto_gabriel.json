@@ -1,0 +1,28 @@
+{
+    "nombre": "Gabriel",
+    "presupuestos": {
+        "9-2026": {
+            "ingresos": 18570.0,
+            "categorias": [
+                "Alquiler",
+                "Comida",
+                "Transporte",
+                "Oca",
+                "Suscripciones",
+                "Veterinaria",
+                "Mama",
+                "Ferreteria"
+            ],
+            "gastos": [
+                0.0,
+                1593.0,
+                1140.0,
+                4000.0,
+                1633.0,
+                1980.0,
+                1000.0,
+                1000.33
+            ]
+        }
+    }
+}
